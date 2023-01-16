@@ -8,7 +8,10 @@ def stock_picker(stock_prices)
     end
     profit.push([stock_prices[idx+1..-1].max-day, idx, stock_prices.index(stock_prices[idx+1..-1].max)])
   end
-  profit.max[1,2]
+  x = profit.select do |value|
+    value[1]<value[2]
+  end
+  x.sort.max[1,2]
 end
 
 p stock_picker(stock_prices)
